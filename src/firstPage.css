@@ -1,0 +1,477 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body
+{
+  
+}
+
+.webgl
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
+    z-index: 0;
+    
+}
+
+.no-select{
+      user-select: none;        /* Standard */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;     /* IE */
+}
+
+
+
+div.navbar{
+     
+
+    position: fixed;
+    top: 0;
+    left:0;
+    z-index: 100;
+    width: 100%;
+    padding: 20px 4%;
+  
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+
+    transform: translateY(-100%);
+    animation-name: navbarVisible;
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-delay: 400ms;
+    animation-timing-function: ease-in;
+
+    & div.title{
+  position: relative;
+        z-index: 101;
+        & h1{
+
+            font-family: var(--title-font);
+            font-size: clamp(1.3rem,3vw,1.6rem);
+            color: white;
+
+            & a{
+
+                color:var(--color-8);
+            }
+        }
+    }
+
+
+
+    & div.menu-big-width{
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap : 20px;
+        --translate:-320%;
+        transform: translateY(var(--translate));
+
+        & h1{
+            font-family: var(--title-font);
+            color: white;
+            font-size: clamp(0.9rem,2vw,1.2rem);
+            font-weight: 200;
+            
+        }
+
+        & .first{
+
+            position: relative;
+            
+            & div.bottom-line{
+
+                position: absolute;
+                top:110%;
+                left:0;
+                width:100%;
+                height:2px;
+                background-color: var(--color-8);
+
+            }
+        }
+
+    }
+
+    & div.menu-small-width{
+
+        position: fixed;
+        top:0;
+        left:0;
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        row-gap: 30px;
+
+         --translate:100%;
+        transform: translateX(var(--translate));
+
+         & h1{
+            
+            font-family: var(--title-font);
+            color: white;
+            font-size: clamp(2.2rem,10vw,3rem);
+            font-weight: 200;
+            
+        }
+
+         & .first{
+
+            position: relative;
+            
+            & div.bottom-line{
+
+                position: absolute;
+                top:110%;
+                left:0;
+                width:100%;
+                height:4px;
+                background-color: var(--color-8);
+               
+
+            }
+        }
+
+        width:100vw;
+        height:100vh;
+        background-color: var(--color-4);
+    }
+
+    & div.menu-small-width.inactive, div.menu-big-width.inactive{
+
+        display: none;
+    }
+
+    & div.right{
+        position: relative;
+        z-index: 101;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+
+
+        & .language{
+
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            position: relative;
+              
+            & h1{
+
+                    font-family: var(--title-font);
+                    color: white;
+                    font-size: 0.9rem;
+                    font-weight: 600;
+                }
+
+               
+            & .down-arrow{
+
+                    & i{
+
+                        color: white;
+                    }
+                }
+
+            & .options{
+
+                position: absolute;
+                width: 100%;
+                top: 140%;
+                left:0%;
+             
+                flex-direction: column;
+                transition: clip-path ease-in 300ms;
+                clip-path:rect(0% 100% 0% 0%);
+          
+                & .option{
+
+                    width: 100%; 
+                    box-sizing: border-box;
+                    padding: 22% 10%;
+                    text-align: center;
+                    background-color: black;
+                }
+
+
+                & .option.choosen{
+
+                    background-color: var(--color-4);
+                }
+
+
+            }
+
+            & .options.click{
+
+                display: flex;
+                clip-path:rect(0% 100% 100% 0%);
+            }
+
+
+
+        }
+        & .menu-controller{
+
+               width: 17px;;
+        
+            & .menu-symbol{
+                display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 4px;
+
+
+                width: 100%;
+                
+                & .top, .middle, .bottom{
+                    
+                    background-color: white;
+                    width: 17px;;
+                    height: 2px;
+                    transition: transform ease-in 500ms,
+                                opacity ease-in 500ms;
+
+                    transform-origin: left center;
+                }
+
+                & .top.menu-open{
+
+                    transform: rotate(45deg);
+
+                }
+
+                & .middle.menu-open{
+
+                    opacity: 0;
+                }
+
+                & .bottom.menu-open{
+
+                    transform: rotate(-45deg);
+
+                }
+
+
+            }
+        }
+
+    }
+
+
+}
+
+
+div.title-page{
+
+
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height:100vh;
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+    grid-template-rows: repeat(12,1fr);
+
+    opacity: 0;
+    animation-name: titlePageVisible;
+    animation-duration: 1000ms;
+    animation-delay: 400ms;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in;
+
+
+    & div.title{
+
+        @media (width < 1000px){
+
+            grid-column: 2 / 13;
+            grid-row: 8 / 13;
+            align-content: flex-start;
+        }
+
+         @media (1000px <= width){
+
+            grid-column: 2 / 13;
+            grid-row: 6 / 13;
+            align-content: flex-start;
+        }
+        
+
+        & div.up{
+
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 30px;
+
+            & h1{
+                font-family: var(--title-font);
+                color: white;
+                 text-shadow: 0px 0px 5px var(--color-6) ;
+                font-size: 2.4rem;
+                font-weight: 300;
+
+                 @media (600px <= width < 1000px){
+                    
+                    font-size: 3rem;
+                     
+                }
+
+                   @media (1000px <= width ){
+                    
+                    font-size: 4rem;
+                     
+                }
+            }
+
+            & div.line{
+
+                width: clamp(50px, 10vw , 100px);
+                height:4px;
+                background-color: var(--color-8);
+
+            }
+
+        }
+
+        & div.down{
+
+            display: flex;
+            justify-content: flex-start;
+            gap:7px;
+            align-items: center;
+         
+
+            & h1{
+                font-family: var(--title-font);
+                color: white;
+                 text-shadow: 0px 0px 5px var(--color-6) ;
+                font-size: 2.4rem;
+                font-weight: 900;
+                 @media (600px <= width < 1000px){
+                    
+                    font-size: 3rem;
+                     
+                }
+
+                   @media (1000px <= width ){
+                    
+                    font-size: 4rem;
+                     
+                }
+                
+            }
+
+            & div.blink-line{
+
+                  height: 3.2rem;
+                  width:3px;
+                  background-color: white;
+                  opacity: 0.4;;
+                  animation-name: blinkLineAnimation;
+                  animation-duration: 400ms;
+                  animation-iteration-count: infinite;
+                  animation-direction: alternate;
+                  
+
+                 @media (600px <= width < 1000px){
+                    
+                    height: 4rem;
+                     
+                }
+
+                   @media (1000px <= width ){
+                    
+                    height: 5rem;
+                     
+                }
+                
+            }
+
+        }
+
+          & div.info{
+
+
+             & p{
+                margin-top: 15px;;
+                 font-family: var(--text-font);
+                color: white;
+                width: 35%;
+                text-shadow: 0px 0px 40px var(--color-6) ;
+
+                
+                @media (width < 600px) {
+                 width: 75% !important;
+                 font-size: 1.1rem;
+                }
+
+                @media (600px <= width < 1000px) {
+                 width: 55% !important;
+                   font-size: 1.2rem;
+                }
+
+                 @media (1000px <= width) {
+                 width: 40% !important;
+                   font-size: 1.5rem;
+                }
+
+            }
+        }
+
+
+    }
+
+
+}
+
+
+@keyframes titlePageVisible {
+
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+
+    }
+}
+
+@keyframes blinkLineAnimation {
+    
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 0.4;
+    }
+
+}
+
+@keyframes navbarVisible {
+
+    0%{
+        transform: translateY(-100%);
+    }
+    100%{
+         transform: translateY(0%);
+    }
+    
+}

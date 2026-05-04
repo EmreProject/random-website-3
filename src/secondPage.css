@@ -1,0 +1,305 @@
+div.second-page{
+
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    margin-top:30vh;
+    padding: 0% 4%;
+    box-sizing: border-box;
+  
+
+    & div.text-part{
+
+        & div.title{
+
+            & h1{
+                display: inline;
+
+                font-family: var(--title-font);
+                color:white;
+                 font-size: 2.4rem;
+                font-weight: 600;
+
+                 @media (600px <= width < 1000px){
+                    
+                    font-size: 3rem;
+                     
+                }
+
+                   @media (1000px <= width ){
+                    
+                    font-size: 4rem;
+                     
+                }
+
+            }
+
+            & div.bottom-line{
+
+                height:3px;
+                background-color: var(--color-2);
+                transition: transform ease-in 300ms;
+                transform-origin: left center;
+                transform: scaleX(0);
+            }
+
+            & div.bottom-line.animate{
+
+                transform: scaleX(1);
+            }
+        }
+
+
+        & div.paragraph{
+
+            margin-top: 3%;
+            & span{
+                color:white;
+                font-family: var(--text-font);
+                font-weight: 600;
+                font-size: 1.6rem;
+                margin-right: 0.25rem;
+            }
+
+              @media (width < 700px){
+
+            width: 100%;;
+          
+            
+            & span{
+                
+                font-family: var(--text-font);
+                  font-size: 1.3rem;
+                margin-right: 0.27rem;
+            }
+        }
+
+          @media (1200px > width >= 700px){
+
+            width: 100%;;
+            
+            & span{
+                
+                font-family: var(--text-font);
+                  font-size: 1.8rem;
+                margin-right: 0.30rem;
+            }
+        }
+
+         @media (width >= 1200px){
+
+            width: 100%;;
+            
+            & span{
+                
+                font-family: var(--text-font);
+                  font-size: 2.4rem;
+                margin-right: 0.30rem;
+            }
+        }
+        }
+
+
+
+        @media (1000px < width) {
+           width: 100%;
+            grid-column: 1 / 7;
+            grid-row: 2 / 5;
+        }
+
+       
+    }
+
+     & div.hover-3d-part{
+        
+        
+       & div.hover-area{
+
+         perspective: 800px;
+        perspective-origin: center;
+
+            & img{
+                --rotateY:0deg;
+                --rotateX:0deg;
+                transform: rotateX(var(--rotateX)) rotateY(var(--rotateY)) !important;
+            }
+
+       }
+
+        @media (width <= 1000px){
+
+            margin-top: 50px;
+
+            & h1{
+
+                font-family: var(--text-font);
+                font-size: 1.3rem;
+                font-weight: 300;
+                color: white;
+                opacity: 0.7;
+
+            }
+
+            & div.hover-area{
+                margin-top: 2%;
+                background-color: var(--color-2);
+                text-align: center;
+                
+                
+                & img{
+                    position: relative;
+                    width:95%;
+                 
+                }
+            }
+                
+        }
+
+         @media (1000px < width) {
+            
+            grid-column: 1 / 7;
+            grid-row: 6 / 11;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+
+
+             & h1{
+
+                font-family: var(--text-font);
+                font-size: 1.3rem;
+                font-weight: 300;
+                color: white;
+                opacity: 0.7;
+
+            }
+
+            & div.hover-area{
+                margin-top: 2%;
+                background-color: var(--color-2);
+                justify-content: stretch;
+                width:75%;
+                position: relative;
+                text-align: center;
+                 flex: 1;
+                  min-height: 0;
+                overflow: hidden;
+                & img{
+                    width:95%;
+                  height: 100%;
+                    object-fit: contain;
+                    
+                }
+            }
+            
+        }
+        
+    }
+
+    & div.hover-parallax-part{
+
+        & img{
+
+            --translateX:0%;
+            --translateY:0%;
+            transform: translateX(-50%) translateY(-50%) translateX(var(--translateX)) translateY(var(--translateY)) !important;
+        }
+
+       @media (width <= 1000px){
+
+            margin-top: 30px;
+
+            & h1{
+
+                font-family: var(--text-font);
+                font-size: 1.3rem;
+                font-weight: 300;
+                color: white;
+                opacity: 0.7;
+
+            }
+
+            & div.hover-area{
+                margin-top: 2%;
+                background-color: var(--color-2);
+                height:40vh;
+                overflow: hidden;
+                position: relative;
+
+                @media (500px < width){
+                    height:50vh;
+                }
+                
+                & img{
+                    position: absolute;
+                    left:50%;
+                    top:50%;
+                    width:120%;
+                    height:120%;
+                    object-fit: cover;
+                }
+            }
+                
+        }
+
+        @media (1000px < width) {
+            
+            grid-column: 7 / 13;
+            grid-row: 2 / 11;
+            justify-self: flex-end;
+            align-self: flex-end;
+            width: 90%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+
+            & h1{
+
+                font-family: var(--text-font);
+                font-size: 1.3rem;
+                font-weight: 300;
+                color: white;
+                opacity: 0.7;
+
+            }
+
+            & div.hover-area{
+                margin-top: 2%;
+                background-color: var(--color-2);
+                height:100% !important;
+                overflow: hidden;
+                position: relative;
+
+                @media (500px < width){
+                    height:50vh;
+                }
+                
+                & img{
+                    position: absolute;
+                    left:50%;
+                    top:50%;
+                    transform: translateX(-50%) translateY(-50%) ;
+                    width:120%;
+                    height:120%;
+                    object-fit: cover;
+                }
+            }
+        }
+        
+        
+    }
+
+
+    @media (width > 1000px) {
+        width: 100%;
+        height: 100vh;
+        display: grid;
+        grid-template-columns: repeat(12,1fr);
+        grid-template-rows: repeat(12,1fr);
+
+        
+    }
+
+
+   
+}

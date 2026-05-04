@@ -1,0 +1,291 @@
+div.third-page{
+
+    min-height: 300vh;
+    position: relative;
+    z-index: 1;
+   
+   
+    & div.title-container{
+
+        height: 100vh;
+        position: sticky;
+        top:20%;
+        
+
+        & h1.title{
+
+            @media (width > 1000px){
+
+                width:45%;
+                font-size: 1.9rem;
+            }
+
+            @media (550px < width <= 1000px){
+
+                width:70%;
+                font-size: 1.6rem;
+            }
+
+            @media( width <= 550px){
+
+                width:85%;
+                font-size: 1.4rem;
+            }
+
+            font-family: var(--title-font);
+            color:white;
+            text-align: center;
+            margin: auto;
+            transform: translateY(20vh);
+           
+        }
+
+    }
+
+
+    & div.parallax-container{
+        overflow: hidden;
+        padding: 0% 4%;
+        position: relative;
+        top:-30vh;
+        z-index: 100;
+
+
+        & div.text-item{
+
+            & p{
+                  --translateY:0px;
+                    transform: translateY(var(--translateY));
+                     --opacity:0;
+                    opacity: var(--opacity);
+            }
+        }
+
+        & .parallax-item{
+            position: relative;
+           
+        }
+
+         & div.img-container{
+            position: relative;
+            --translateY:0px;
+            transform: translateY(var(--translateY));
+             --opacity:0;
+            opacity: var(--opacity);
+
+         }
+
+        & h1.label{
+            position: absolute;
+            padding: 13px 25px;
+            background-color: var(--color-2);
+            font-family: var(--text-font);
+            color: white;
+            border-radius: 20px;
+            z-index: 1;
+            font-size: 1rem;
+            font-weight: 300;
+            --translateY:0px;
+          
+        }
+
+        & h1.label.slow{
+
+            top:20%;
+            left:0%;
+            transform: translateY(var(--translateY)) translateX(-50%);
+        }
+
+         & h1.label.fast{
+
+            top:100%;
+            left:0%;
+            transform: translateY(var(--translateY))  translateX(-50%) translateY(-50%);
+        }
+
+         & h1.label.speedy{
+
+            top:100%;
+            left:100%;
+            transform: translateY(var(--translateY))  translateX(-50%) translateY(-50%);
+        }
+
+
+        @media (width >= 700px){
+
+             & div.img-container div{
+                    position: relative;
+                    overflow: hidden;
+                    height: 100%;
+                     & img{
+                        
+                        position: absolute;
+                        top:50%;
+                        left:50%;
+                        --translateY:0;
+                        transform: translateX(-50%) translateY(-50%) translateY(var(--translateY))  ;
+                        object-fit: cover;
+                        width:150%;
+                        height:150%;
+                    }
+
+             }
+
+
+
+
+             & .parallax-item.slow{
+
+                width: 100%;
+                height: 30vh;
+
+                & div.img-container{
+
+                    width:clamp(300px,55vw,500px);
+                    height: 100%;
+
+                }
+             }
+
+             & .parallax-item.fast{
+
+                width:100%;
+                height:40vh;
+
+                & div.img-container{
+
+                    width:clamp(350px,60vw,700px);
+                    height: 100%;
+                    margin-left: auto;
+
+                }
+             }
+
+             & .parallax-item.speedy{
+
+                width:48.5%;
+                height:40vw;
+                min-height: 600px;
+                display: inline-block;
+                margin-right: auto;
+
+                  & div.img-container{
+                    
+                    width: 100%;;
+                    margin: auto;
+                    height: 100%;
+                    max-width: 500px;
+                    
+
+                }
+
+             }
+
+             & .text-item{
+
+                width:50%;
+               
+              vertical-align: top;
+                display: inline-block;
+              
+
+                & p{
+                    font-family: var(--text-font);
+                    color: white;
+                     font-size: clamp(1.2rem,2vw,1.5rem);
+                     width: 100%;
+                     max-width: 600px;
+                       margin: auto;
+
+
+                }
+
+             }
+        }
+        
+        @media (width < 700px){
+
+             & .parallax-item +  .parallax-item{
+
+
+                margin-top: 70px;;
+             }
+
+            & .parallax-item{
+
+                width: 100%;
+                height:30vh;
+             
+                & div.img-container{
+                    height: 100%;
+                    width:75%;
+                }
+                & div.img-container div{
+                    width:100%;
+                    height:100%;
+                    position: relative;
+                    overflow: hidden;
+
+                    
+                     & img{
+                        
+                        position: absolute;
+                        top:50%;
+                        left:50%;
+                        --translateY:0;
+                        transform:translateX(-50%) translateY(-50%)  translateY(var(--translateY))  ;
+                        object-fit: cover;
+                        width:150%;
+                        height:150%;
+                    }
+
+                }
+               
+            }
+
+
+            & .parallax-item.fast {
+
+                display: flex;
+                justify-content: flex-end;
+            }
+
+             & .parallax-item.speedy {
+
+                display: flex;
+                justify-content: center;
+                min-height: 600px;
+
+                & div.img-container{
+                    width:100% !important;
+                }
+            }
+
+            & .text-item{
+
+                display: flex;
+                justify-content: center;
+                margin-top: 45px;
+                margin-bottom: 45px;
+                
+                
+                & p{
+                    position:relative;
+                    z-index: 10;
+                    font-family: var(--text-font);
+                    color: white;
+                   
+                    text-align: left;
+                    font-size: 1.2rem;
+                     
+                    @media (width > 500px){
+                        font-size: 1.4rem;
+                    }
+                    
+                }
+            }
+
+        }
+
+    }
+}
